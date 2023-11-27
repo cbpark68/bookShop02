@@ -6,6 +6,8 @@ import java.io.OutputStream;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,9 +17,10 @@ import net.coobird.thumbnailator.Thumbnails;
 
 @Controller
 public class FileDownloadController {
+	private static Logger logger = LoggerFactory.getLogger(FileDownloadController.class);
 	private static String CURR_IMAGE_REPO_PATH = "/home/cbpark68/file_repo/bsleepro31";
 	
-	@RequestMapping("/download")
+	@RequestMapping("/download.do")
 	protected void download(@RequestParam("fileName") String fileName,
 		                 	@RequestParam("goods_id") String goods_id,
 			                 HttpServletResponse response) throws Exception {
@@ -46,6 +49,7 @@ public class FileDownloadController {
 			                 HttpServletResponse response) throws Exception {
 		OutputStream out = response.getOutputStream();
 		String filePath=CURR_IMAGE_REPO_PATH+"/"+goods_id+"/"+fileName;
+		logger.info("filePath="+filePath);
 		File image=new File(filePath);
 		
 		if (image.exists()) { 

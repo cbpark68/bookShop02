@@ -33,21 +33,21 @@ public abstract class BaseController  {
 			imageFileVO.setFileName(originalFileName);
 			fileList.add(imageFileVO);
 			
-			File file = new File(CURR_IMAGE_REPO_PATH +"\\"+ fileName);
+			File file = new File(CURR_IMAGE_REPO_PATH +"/"+ fileName);
 			if(mFile.getSize()!=0){ //File Null Check
 				if(! file.exists()){ //경로상에 파일이 존재하지 않을 경우
 					if(file.getParentFile().mkdirs()){ //경로에 해당하는 디렉토리들을 생성
 							file.createNewFile(); //이후 파일 생성
 					}
 				}
-				mFile.transferTo(new File(CURR_IMAGE_REPO_PATH +"\\"+"temp"+ "\\"+originalFileName)); //임시로 저장된 multipartFile을 실제 파일로 전송
+				mFile.transferTo(new File(CURR_IMAGE_REPO_PATH +"/"+"temp"+ "/"+originalFileName)); //임시로 저장된 multipartFile을 실제 파일로 전송
 			}
 		}
 		return fileList;
 	}
 	
 	private void deleteFile(String fileName) {
-		File file =new File(CURR_IMAGE_REPO_PATH+"\\"+fileName);
+		File file =new File(CURR_IMAGE_REPO_PATH+"/"+fileName);
 		try{
 			file.delete();
 		}catch(Exception e){

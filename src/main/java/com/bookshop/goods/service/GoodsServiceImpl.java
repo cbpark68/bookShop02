@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bookshop.goods.dao.GoodsDAO;
 import com.bookshop.goods.vo.GoodsVO;
+import com.bookshop.goods.vo.ImageFileVO;
 
 @Service("goodsService")
 @Transactional(propagation=Propagation.REQUIRED)
@@ -32,17 +33,24 @@ public class GoodsServiceImpl implements GoodsService {
 
 	@Override
 	public Map goodsDetail(String _goods_id) throws Exception {
-		return null;
+		Map map = new HashMap();
+		GoodsVO vo = goodsDAO.selectGoodsDetail(_goods_id);
+		map.put("goodsVO", vo);
+		List<ImageFileVO> list = goodsDAO.selectGoodsDetailImage(_goods_id);
+		map.put("imageList", list);
+		return map;
 	}
 
 	@Override
 	public List<String> keywordSearch(String keyword) throws Exception {
-		return null;
+		List<String> list = goodsDAO.selectKeywordSearch(keyword);
+		return list;
 	}
 
 	@Override
 	public List<GoodsVO> searchGoods(String searchWord) throws Exception {
-		return null;
+		List list = goodsDAO.selectGoodsBySearchWord(searchWord);
+		return list;
 	}
 
 }
