@@ -146,7 +146,7 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 }
 
 function fn_order_all_cart_goods(){
-//	alert("모두 주문하기");
+	//alert("모두 주문하기");
 	var order_goods_qty;
 	var order_goods_id;
 	var objForm=document.frm_order_all_cart;
@@ -156,7 +156,7 @@ function fn_order_all_cart_goods(){
 	var length=checked_goods.length;
 	
 	
-	//alert(length);
+	alert(length);
 	if(length>1){
 		for(var i=0; i<length;i++){
 			if(checked_goods[i].checked==true){
