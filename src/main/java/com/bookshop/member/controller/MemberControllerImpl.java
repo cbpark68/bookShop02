@@ -1,6 +1,7 @@
 package com.bookshop.member.controller;
 
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -77,6 +78,10 @@ public class MemberControllerImpl extends BaseController implements MemberContro
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "text/html;charset=utf-8");
 		try {
+			//이메일 앞뒤에 붙은 , ,non 문자열을 제거한다.
+			String email2 = _memberVO.getEmail2().replaceAll(",no.*$", ""); //,non제거
+			email2 = email2.replaceAll("^,", ""); //제일앞 , 제거
+			_memberVO.setEmail2(email2);
 			memberService.addMember(_memberVO);
 			msg = "<script>";
 			msg += " alert('회원가입을 마쳤습니다. 로그인창으로 이동합니다.');";

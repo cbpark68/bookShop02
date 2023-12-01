@@ -243,6 +243,23 @@ public class OrderVO {
 	public void setOrderer_hp(String orderer_hp) {
 		this.orderer_hp = orderer_hp;
 	}
+	@Override
+	public String toString() {
+		return "OrderVO [order_seq_num=" + order_seq_num + ", member_id=" + member_id + ", order_id=" + order_id
+				+ ", goods_id=" + goods_id + ", goods_title=" + goods_title + ", goods_sales_price=" + goods_sales_price
+				+ ", total_goods_price=" + total_goods_price + ", cart_goods_qty=" + cart_goods_qty
+				+ ", order_goods_qty=" + order_goods_qty + ", orderer_name=" + orderer_name + ", receiver_name="
+				+ receiver_name + ", receiver_hp1=" + receiver_hp1 + ", receiver_hp2=" + receiver_hp2
+				+ ", receiver_hp3=" + receiver_hp3 + ", receiver_tel1=" + receiver_tel1 + ", receiver_tel2="
+				+ receiver_tel2 + ", receiver_tel3=" + receiver_tel3 + ", delivery_address=" + delivery_address
+				+ ", delivery_message=" + delivery_message + ", delivery_method=" + delivery_method + ", gift_wrapping="
+				+ gift_wrapping + ", pay_method=" + pay_method + ", card_com_name=" + card_com_name
+				+ ", card_pay_month=" + card_pay_month + ", pay_orderer_hp_num=" + pay_orderer_hp_num
+				+ ", pay_order_time=" + pay_order_time + ", delivery_state=" + delivery_state + ", final_total_price="
+				+ final_total_price + ", goods_qty=" + goods_qty + ", goods_fileName=" + goods_fileName
+				+ ", orderer_hp=" + orderer_hp + "]";
+	}
+	
 	
 	
 
