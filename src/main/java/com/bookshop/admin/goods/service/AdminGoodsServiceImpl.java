@@ -43,7 +43,7 @@ public class AdminGoodsServiceImpl implements AdminGoodsService {
 		GoodsVO goodsVO = adminGoodsDAO.selectGoodsDetail(goods_id);
 		List imageFileList = adminGoodsDAO.selectGoodsImageFileList(goods_id);
 		goodsMap.put("goods", goodsVO);
-		goodsMap.put("imageFileLIst", imageFileList);
+		goodsMap.put("imageFileList", imageFileList);
 		return goodsMap;
 	}
 
