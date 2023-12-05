@@ -181,7 +181,7 @@ function fn_modify_member_info(member_id,mod_type){
 			value_tel2=tel2.value;
 			value_tel3=tel3.value;
 			
-			value=value_tel1+","+value_tel2+", "+value_tel3;
+			value=value_tel1+","+value_tel2+","+value_tel3;
 		}else if(mod_type=='hp'){
 			var hp1=frm_mod_member.hp1;
 			var hp2=frm_mod_member.hp2;
@@ -198,7 +198,7 @@ function fn_modify_member_info(member_id,mod_type){
 			value_hp3=hp3.value;
 			value_smssts_yn=smssts_yn.checked;
 			
-			value=value_hp1+","+value_hp2+", "+value_hp3+","+value_smssts_yn;
+			value=value_hp1+","+value_hp2+","+value_hp3+","+value_smssts_yn;
 			
 		}else if(mod_type=='email'){
 			var email1=frm_mod_member.email1;
@@ -228,7 +228,7 @@ function fn_modify_member_info(member_id,mod_type){
 		$.ajax({
 			type : "post",
 			async : false, //false인 경우 동기식으로 처리한다.
-			url : "http://localhost:8081/bookshop02/admin/member/modifyMemberInfo.do",
+			url : "http://localhost:8081/bookShop02/admin/member/modifyMemberInfo.do",
 			data : {
 				member_id:member_id,
 				mod_type:mod_type,
