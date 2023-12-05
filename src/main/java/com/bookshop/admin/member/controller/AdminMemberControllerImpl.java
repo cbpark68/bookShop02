@@ -1,5 +1,6 @@
 package com.bookshop.admin.member.controller;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -73,12 +74,61 @@ public class AdminMemberControllerImpl extends BaseController implements AdminMe
 	}
 
 	@Override
+	@RequestMapping(value="/modifyMemberInfo.do",method= {RequestMethod.GET,RequestMethod.POST})
 	public void modifyMemberInfo(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HashMap<String,String> memberMap = new HashMap<String,String>();
+		String[] val = null;
+		PrintWriter pw = response.getWriter();
+		String member_id = request.getParameter("member_id");
+		String mod_type = request.getParameter("mod_type");
+		String value = request.getParameter("value");
+		if(mod_type.equals("member_birth")) {
+			val = value.split(",");
+			memberMap.put("member_birth_y", val[0]);
+			memberMap.put("member_birth_m", val[1]);
+			memberMap.put("member_birth_d", val[2]);
+			memberMap.put("member_birth_gn", val[3]);
+		}else if(mod_type.equals("tel")){
+			val = value.split(",");
+			memberMap.put("tel1", val[0]);
+			memberMap.put("tel2", val[1]);
+			memberMap.put("tel3", val[2]);
+		}else if(mod_type.equals("hp")) {
+			val = value.split(",");
+			memberMap.put("hp1", val[0]);
+			memberMap.put("hp2", val[1]);
+			memberMap.put("hp3", val[2]);
+			memberMap.put("smssts_yn", val[3]);
+		}else if(mod_type.equals("email")) {
+			val = value.split(",");
+			memberMap.put("email1", val[0]);
+			memberMap.put("email2", val[1]);
+			memberMap.put("emailsta_yn", val[2]);
+		}else if(mod_type.equals("address")) {
+			val = value.split(",");
+			memberMap.put("zipcode", val[0]);
+			memberMap.put("roadAddress", val[1]);
+			memberMap.put("jibunAddress", val[2]);
+			memberMap.put("namujiAddress", val[3]);
+		}
+		memberMap.put("member_id", member_id);
+		adminMemberService.modifyMemberInfo(memberMap);
+		pw.print("mod_success");
+		pw.close();
 	}
 
 	@Override
+	@RequestMapping(value="/deleteMember.do",method=RequestMethod.POST)
 	public ModelAndView deleteMember(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		return null;
+		ModelAndView mav = new ModelAndView();
+		HashMap<String,String> memberMap = new HashMap<String,String>();
+		String member_id = request.getParameter("member_id");
+		String del_yn = request.getParameter("del_yn");
+		memberMap.put("member_id", member_id);
+		memberMap.put("del_yn", del_yn);
+		adminMemberService.modifyMemberInfo(memberMap);
+		mav.setViewName("redirect:/admin/member/adminMemberMain.do");
+		return mav;
 	}
 
 }

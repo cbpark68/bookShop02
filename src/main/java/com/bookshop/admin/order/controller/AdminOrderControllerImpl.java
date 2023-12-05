@@ -65,7 +65,7 @@ public class AdminOrderControllerImpl extends BaseController implements AdminOrd
 	}
 
 	@Override
-	@RequestMapping(value="/modifyDeliveryState.do",method=RequestMethod.GET)
+	@RequestMapping(value="/modifyDeliveryState.do",method=RequestMethod.POST)
 	public ResponseEntity modifyDeliveryState(@RequestParam Map<String, String> deliveryMap, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		adminOrderService.modifyDeliveryState(deliveryMap);
